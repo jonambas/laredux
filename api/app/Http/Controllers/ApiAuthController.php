@@ -9,6 +9,7 @@ use Tymon\JWTAuth\Facades\JWTAuth;
 use Tymon\JWTAuth\Exceptions\JWTException;
 
 use App\User;
+use Validator;
 
 class ApiAuthController extends Controller
 {
@@ -27,7 +28,7 @@ class ApiAuthController extends Controller
 
       } catch (JWTException $e) {
 
-        return response()->json(['error' => 'could_not_create_token'], 500);
+        return response()->json(['error' => 'could_not_create_token'], 400);
 
       }      
 
@@ -35,7 +36,26 @@ class ApiAuthController extends Controller
     }
 
     public function register(Request $request) {
-      // return response()->json('register json', 200);
-      // return JWTAuth::parseToken()->authenticate();
+
+      $credentials = $request->only('email', 'password', 'name');
+
+      $validator = Validator::make($credentials, [
+          'name' => 'required|max:255',
+          'email' => 'required|email|max:255|unique:users',
+          'password' => 'required|min:6',
+      ]);
+
+      if ($validator->fails()) {
+        return response()->json(['error' => $validator->errors()], 400);
+      }
+
+      $user = User::create([
+        'name'      => $request->name,
+        'email'     => $request->email,
+        'password'  => bcrypt('password'),
+      ]);
+
+      $token = JWTAuth::fromUser($user);
+      return response()->json(compact('token'));
     }
 }

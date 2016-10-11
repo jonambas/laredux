@@ -6,6 +6,8 @@ export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_ERROR = 'LOGIN_ERROR';
 export const LOGOUT = 'LOGOUT';
 
+// TODO: BREAK THIS UP 
+
 // Initiates Login
 export function login(credentials) {
   return (dispatch) => {
@@ -18,7 +20,7 @@ export function login(credentials) {
         localStorage.setItem('token', response.data.token);
       })
       .then(() => {
-        dispatch(fetchUser());      
+        dispatch(fetchUser());
         browserHistory.push('/dashboard')
       })
       .catch(error => {
@@ -103,5 +105,50 @@ export function fetchUserError(fetchUserError) {
 export function resetUser() {
   return {
     type: RESET_USER
+  }
+}
+
+export const REGISTER_REQUEST = 'REGISTER_REQUEST';
+export const REGISTER_SUCCESS = 'REGISTER_SUCCESS';
+export const REGISTER_ERROR = 'REGISTER_ERROR';
+export function register(credentials) {
+  console.log('register action hit');
+  return (dispatch) => {
+
+    dispatch(registerRequest());
+
+    api.post('/register', credentials)
+      .then(response => {
+        dispatch(registerSuccess());
+        localStorage.setItem('token', response.data.token);
+      })
+      .then(() => {
+        dispatch(loginSuccess());
+        dispatch(fetchUser());
+        browserHistory.push('/dashboard')
+      })
+      .catch(error => {
+        console.log(error);
+        dispatch(registerError(error.response.data.error));
+      });
+  }
+}
+
+export function registerRequest() {
+  return {
+    type: REGISTER_REQUEST    
+  }
+}
+
+export function registerSuccess() {
+  return {
+    type: REGISTER_SUCCESS    
+  }
+}
+
+export function registerError(registerError) {
+  return {
+    type: REGISTER_ERROR,
+    registerError
   }
 }

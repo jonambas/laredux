@@ -10,6 +10,7 @@ function user(state = {}, action) {
       return { ...state, authenticated: false, authenticating: false, loginError: null };
     case 'LOGIN_ERROR' :
       return { ...state, authenticated: false, loginError: action.loginError, authenticating: false };
+
     case 'FETCH_USER_SUCCESS' :
       return { ...state, ...action.user };
     case 'RESET_USER' :
@@ -17,8 +18,16 @@ function user(state = {}, action) {
         id: null, 
         name: null, 
         email: null };
-    case 'FETCH_USER_ERROR' :
-    case 'FETCH_USER' :
+    // case 'FETCH_USER_ERROR' :
+    // case 'FETCH_USER' :
+    
+    case 'REGISTER_REQUEST' :
+      return { ...state, registering: true, registerError: null };
+    case 'REGISTER_SUCCESS' :
+      return { ...state, registering: false };
+    case 'REGISTER_ERROR' :
+      return { ...state, registerError: action.registerError, registering: false };
+
     default:
       return state;
   }
