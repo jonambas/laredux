@@ -1,6 +1,7 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
+use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 use App\Http\Requests;
@@ -11,7 +12,7 @@ use Tymon\JWTAuth\Exceptions\JWTException;
 use App\User;
 use Validator;
 
-class ApiAuthController extends Controller
+class AuthController extends Controller
 {
     
     public function login(Request $request) {
@@ -19,17 +20,12 @@ class ApiAuthController extends Controller
       $credentials = $request->only('email', 'password');
 
       try {
-
         $token = JWTAuth::attempt($credentials);
-        
         if (!$token) {
           return response()->json(['error' => 'invalid_credentials'], 401);
         }
-
       } catch (JWTException $e) {
-
         return response()->json(['error' => 'could_not_create_token'], 400);
-
       }      
 
       return response()->json(compact('token'), 200);

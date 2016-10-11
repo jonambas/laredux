@@ -18,7 +18,6 @@ const routes = (
         <IndexRoute component={Welcome} />
         <Route path="/register" component={Register}/>
         <Route path="/login" component={Login}/>
-        
         <Route path="/logout" component={Logout}/>
         <Route path="/dashboard" component={Dashboard} onEnter={verifyAuth}/>
       </Route>

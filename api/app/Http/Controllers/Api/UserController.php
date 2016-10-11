@@ -1,6 +1,7 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
+use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 use App\Http\Requests;
@@ -10,7 +11,7 @@ use Tymon\JWTAuth\Exceptions\JWTException;
 
 use App\User;
 
-class ApiUserController extends Controller
+class UserController extends Controller
 {
     
     public function getAuthenticatedUser(Request $request) {
@@ -19,6 +20,5 @@ class ApiUserController extends Controller
       return response()->json(compact('user'), 200);
 
     }
-    
 
 }

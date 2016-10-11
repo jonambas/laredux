@@ -6,10 +6,9 @@ export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_ERROR = 'LOGIN_ERROR';
 export const LOGOUT = 'LOGOUT';
 
-// TODO: BREAK THIS UP 
-
 // Initiates Login
 export function login(credentials) {
+
   return (dispatch) => {
 
     dispatch(loginRequest());
@@ -56,7 +55,6 @@ export function logout() {
   }
 }
 
-
 export const FETCH_USER = 'FETCH_USER';
 export const FETCH_USER_SUCCESS = 'FETCH_USER_SUCCESS';
 export const FETCH_USER_ERROR = 'FETCH_USER_ERROR';
@@ -76,7 +74,6 @@ export function fetchUser(user) {
         dispatch(fetchUserSuccess({ name, id, email }));
       })
       .catch(error => {
-        console.log(error);
         dispatch(fetchUserError(error));
       });
   }
@@ -111,8 +108,9 @@ export function resetUser() {
 export const REGISTER_REQUEST = 'REGISTER_REQUEST';
 export const REGISTER_SUCCESS = 'REGISTER_SUCCESS';
 export const REGISTER_ERROR = 'REGISTER_ERROR';
-export function register(credentials) {
-  console.log('register action hit');
+
+export function register(credentials) {  
+
   return (dispatch) => {
 
     dispatch(registerRequest());
@@ -128,7 +126,7 @@ export function register(credentials) {
         browserHistory.push('/dashboard')
       })
       .catch(error => {
-        console.log(error);
+        
         dispatch(registerError(error.response.data.error));
       });
   }
@@ -151,4 +149,20 @@ export function registerError(registerError) {
     type: REGISTER_ERROR,
     registerError
   }
+}
+
+// Used to log user in if token is valid
+// TODO: add an api endpoint to check token
+export function checkToken() {
+  
+  return (dispatch) => {
+    
+    const token = localStorage.getItem('token');
+
+    if (token){
+      dispatch(loginSuccess());
+      dispatch(fetchUser());
+    }
+  }
+  
 }

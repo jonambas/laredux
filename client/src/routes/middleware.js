@@ -9,15 +9,6 @@ export const verifyAuth = (next, replace) => {
   // console.log('attempting', intendedRoute);
 
   if (!state.user.authenticated) {
-    replace('/');
-  }
-}
-
-export const checkToken = () => {
-  const token = localStorage.getItem('token');
-
-  if (token){
-    store.dispatch(loginSuccess());
-    store.dispatch(fetchUser());
+    replace('/login');
   }
 }

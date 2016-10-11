@@ -2,10 +2,18 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
+import { browserHistory } from 'react-router';
 import { register } from '../../../actions/user';
 
 class Register extends Component {
   
+  componentDidMount() {
+    const { authenticated } = this.props;
+    if (authenticated) {
+      browserHistory.push('/dashboard');
+    }
+  }
+
   onSubmit(credentials) {
     this.props.register(credentials);
   }
