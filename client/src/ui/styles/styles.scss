@@ -35,6 +35,25 @@ nav {
 
   li {
     display: inline-block;
-    padding: rem(9);
+  }
+
+  a {
+    display: inline-block;
+    padding: rem(12) rem(16);
+    text-decoration: none;
+  }
+}
+
+fieldset {
+  border: none;
+  text-align: left;
+
+  input {
+    display: block;
+    width: 100%;
+  }
+
+  label {
+    display: block;
   }
 }

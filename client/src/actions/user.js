@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { browserHistory } from 'react-router';
 
-const API_URL = location.href.indexOf('localhost') > 0 ? 'http://lareadux.dev/api/v1' : '/api/v1';
+const API_URL = location.href.indexOf('localhost') > 0 ? 'http://laredux.dev/api/v1' : '/api/v1';
 
 export const LOGIN_REQUEST = 'LOGIN_REQUEST';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
@@ -12,7 +12,7 @@ export const LOGOUT = 'LOGOUT';
 export function login(credentials) {
   return (dispatch) => {
 
-    dispatch(loginRequest(credentials));
+    dispatch(loginRequest());
 
     axios.post(`${API_URL}/login`, credentials)
       .then(response => {
@@ -29,10 +29,9 @@ export function login(credentials) {
   }
 }
 
-export function loginRequest(credentials) {
+export function loginRequest() {
   return {
-    type: LOGIN_REQUEST,
-    credentials
+    type: LOGIN_REQUEST    
   }
 }
 

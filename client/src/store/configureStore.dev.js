@@ -5,7 +5,12 @@ import thunk from 'redux-thunk';
 import rootReducer from '../reducers';
 
 const middleware = [ thunk, routerMiddleware(browserHistory) ];
-const initialState = {};
+const initialState = {
+  user: {
+    authenticated: false,
+    authenticating: false
+  }
+};
 
 const store = createStore(rootReducer, initialState,
   window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__(applyMiddleware(...middleware))

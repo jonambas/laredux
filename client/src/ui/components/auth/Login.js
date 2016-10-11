@@ -18,11 +18,11 @@ class Login extends Component {
   }
 
   render() {
-    const { handleSubmit, errorMessage, authenticated } = this.props;
+    const { handleSubmit, errorMessage, authenticated, authenticating } = this.props;
     
     return (
       <div className="flex center-xs middle-xs" style={{ height: '100%'}}>
-        <div className="col-xs-5">
+        <div className="col-xs-10 col-md-4">
           <h3>Login</h3>
           <p>{ errorMessage ? errorMessage : '' }</p>
           <form onSubmit={handleSubmit(this.onSubmit.bind(this))} >
@@ -34,7 +34,7 @@ class Login extends Component {
               <label>Password:</label>
               <Field name="password" component="input" type="password"/>
             </fieldset>
-            <button type="submit">Login</button>
+            <button type="submit" disabled={authenticating}>Login</button>
           </form>
         </div>
       </div>
@@ -45,6 +45,7 @@ class Login extends Component {
 function mapStateToProps(state) {
   return {
     authenticated: state.user.authenticated,
+    authenticating: state.user.authenticating,
     errorMessage: state.user.errorMessage,
   };
 }
