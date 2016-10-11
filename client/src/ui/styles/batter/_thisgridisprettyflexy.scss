@@ -1,0 +1,163 @@
+// Heavy influence from github.com/kristoferjoseph/flexboxgrid
+// Take a look at flexboxgrid.com for similar usage
+
+// Namespaces
+$wrapper-namespace: "flex";
+$column-namespace: "col";
+
+// Gutter Width
+$gutter-width: 1rem;
+
+// Number of Columns
+$grid-columns: 12;
+
+// Time to get flexy 💪
+.#{$wrapper-namespace} {
+  box-sizing: border-box;
+  display: flex;
+  flex: 0 1 auto;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-left: -$gutter-width;
+}
+
+@mixin flex-col {
+  box-sizing: border-box;
+  flex: 0 0 auto;
+  padding-left: $gutter-width;
+}
+
+// Columns sans breakpoint — the default
+@for $i from 1 through $grid-columns {
+  $width: 100% / $grid-columns * $i;
+
+  .#{$column-namespace}-xs-#{$i} {
+    @include flex-col;
+    flex-basis: $width;
+    max-width: $width;
+  }
+
+  .#{$column-namespace}-xs-offset-#{$i} {
+    margin-left: $width;
+  }
+}
+
+.#{$column-namespace}-xs {
+  @include flex-col;
+  flex-grow: 1;
+  flex-basis: 0;
+  max-width: 100%;
+}
+
+.start-xs {
+  justify-content: flex-start;
+  text-align: start;
+}
+
+.center-xs {
+  justify-content: center;
+  text-align: center;
+}
+
+.end-xs {
+  justify-content: flex-end;
+  text-align: end;
+}
+
+.top-xs {
+  align-items: flex-start;
+}
+
+.middle-xs {
+  align-items: center;
+}
+
+.bottom-xs {
+  align-items: flex-end;
+}
+
+.around-xs {
+  justify-content: space-around;
+}
+
+.between-xs {
+  justify-content: space-between;
+}
+
+.first-xs {
+  order: -1;
+}
+
+.last-xs {
+  order: 1;
+}
+
+// Breakpoints defined in _bits.scss
+@each $bp, $bp-size in $breakpoints {
+
+  @media only screen and (min-width: $bp-size) {
+
+    .#{$column-namespace}-#{$bp} {
+      flex-grow: 1;
+      flex-basis: 0;
+      max-width: 100%;
+    }
+    
+    @for $i from 1 through $grid-columns {
+      $width: 100% / $grid-columns * $i;
+
+      .#{$column-namespace}-#{$bp}-#{$i} {
+        @include flex-col;
+        flex-basis: $width;
+        max-width: $width;
+      }
+
+      .#{$column-namespace}-#{$bp}-offset-#{$i} {
+        margin-left: $width;
+      }
+    }
+
+    .start-#{$bp} {
+      justify-content: flex-start;
+      text-align: start;
+    }
+
+    .center-#{$bp} {
+      justify-content: center;
+      text-align: center;
+    }
+
+    .end-#{$bp} {
+      justify-content: flex-end;
+      text-align: end;
+    }
+
+    .top-#{$bp} {
+      align-items: flex-start;
+    }
+
+    .middle-#{$bp} {
+      align-items: center;
+    }
+
+    .bottom-#{$bp} {
+      align-items: flex-end;
+    }
+
+    .around-#{$bp} {
+      justify-content: space-around;
+    }
+
+    .between-#{$bp} {
+      justify-content: space-between;
+    }
+
+    .first-#{$bp} {
+      order: -1;
+    }
+
+    .last-#{$bp} {
+      order: 1;
+    }
+  }
+}

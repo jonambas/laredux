@@ -5,18 +5,18 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>laredux</title>
+        <title>404</title>
 
         <!-- Fonts -->
-        <link href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,700" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
 
         <!-- Styles -->
         <style>
             html, body {
                 background-color: #fff;
-                color: #343B49;
-                font-family: 'Open Sans', sans-serif;
-                font-weight: 300;
+                color: #636b6f;
+                font-family: 'Raleway', sans-serif;
+                font-weight: 100;
                 height: 100vh;
                 margin: 0;
             }
@@ -46,7 +46,7 @@
             }
 
             .title {
-                font-size: 48px;
+                font-size: 84px;
             }
 
             .links > a {
@@ -68,7 +68,7 @@
         <div class="flex-center position-ref full-height">
             <div class="content">
                 <div class="title m-b-md">
-                    Lareadux
+                    404
                 </div>                
             </div>
         </div>

@@ -1,0 +1,70 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,700);
+
+$open-sans: 'Open Sans', sans-serif;
+
+html {
+  color: color(text);
+  font-size: $baseline + 0px;
+}
+
+body {
+  line-height: 1.8em;
+
+  // -webkit-font-smoothing: antialiased;
+  // -moz-osx-font-smoothing: grayscale;
+  
+  font:{
+    size: $baseline + 0px;
+    family: $open-sans;
+    weight: 400;
+  }
+}
+
+::selection {
+  color: #111;
+  background: #D6EDFF;
+  text-shadow: none;
+}
+
+%header {
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+
+  // text-rendering: optimizeLegibility;
+  
+  color: color(text);
+  line-height: 1.1em;
+  
+  font:{
+    family: $open-sans;
+    weight: 300;
+  }
+  
+  // Adds a little top padding to headers, unless it is first child
+  *+& {
+    padding-top: rem(4);
+  }
+
+  &::selection{
+    //color: #000;
+  }
+}
+
+// Header Sizing
+$headers: (h1: 48, h2: 40, h3: 32, h4: 28, h5: 22, h6: 16);
+
+@each $header, $size in $headers {
+  #{$header} {
+    @extend %header;
+    font-size: rem($size);
+  }
+}
+
+a {
+  color: inherit;
+  transition: 0.15s;
+
+  &:hover {
+    color: color(blue);
+  }
+}

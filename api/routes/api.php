@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Http\Request;
+use Tymon\JWTAuth\Facades\JWTAuth;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +14,24 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::get('/user', function (Request $request) {
-    return $request->user();
-})->middleware('auth:api');
+Route::group([
+  'prefix'     => 'api/v1',
+  'middleware' => ['api', 'cors'],
+  ], function () {
+
+    Route::get('/test',   'ApiAuthController@test');
+    Route::post('/login',   'ApiAuthController@login');
+    Route::post('/register', 'ApiAuthController@register');
+
+});
+
+Route::group([
+  'prefix'     => 'api/v1',
+  'middleware' => ['api', 'jwt.auth', 'cors']
+  ], function () {
+
+    Route::get('/user', function() {
+      return JWTAuth::parseToken()->authenticate();
+    });
+
+});

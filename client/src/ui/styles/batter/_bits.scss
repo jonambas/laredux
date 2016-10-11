@@ -1,0 +1,48 @@
+/*
+ * Global variables only please
+ * 
+ */
+
+ /*
+  * Adjusts baseline font size.
+  */
+ 
+$baseline: 16;
+
+/*
+ * Outputs color 🖌
+ * Usage: background: color(off-white);
+ */
+
+$color-map: (
+  white:      #FEFEFE,
+  off-white:  #F0F1F4,
+  black:      #1e2027,
+  blue:       #6F9DEF,
+  text:       #343B49
+);
+
+/*
+ * Outputs breakpoint value 📱
+ * Usage: @media screen and (min-width: break(md)) { ... }
+ */
+
+$breakpoints: (
+  xl: 80em,
+  lg:  64em,
+  md:  48em,
+  sm:  30em
+);
+
+/*
+ * Outputs box shadow 🆒
+ * Usage: box-shadow: shadow(2);
+ * Concatenates all shodows below selected level. 
+ * shadow(3) will output 1, 2, and 3 together.
+ */
+
+$shadows: (
+  1: 0px 1px 3px rgba(#000, 0.12),
+  2: 2px 6px 12px rgba(#000, 0.14),
+  3: 0px 10px 20px rgba(#000, 0.16)
+);

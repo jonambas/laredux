@@ -1,0 +1,84 @@
+@function base($n, $round: false) {
+  $result: $n * $baseline + 0px;
+
+  @if $round == "up" {
+    $result: ceil($result)
+  } @else if $round == "down" {
+    $result: floor($result)
+  }
+
+  @return $result;
+}
+
+@function rem($n) {
+  $result: 0rem + $n / $baseline;
+  @return $result;
+}
+
+@function color($c) {
+  @if not map-has-key($color-map, $c) {
+    @warn "color(#{$c}) not found in _bits.scss. ";
+    @return color(white);
+  }
+  @return map-get($color-map, $c);
+}
+
+@function break($size) {
+  @if not map-has-key($breakpoints, $size) {
+    @warn "break(#{$size}) not found in _bits.scss. ";
+    @return break(m);
+  }
+  @return map-get($breakpoints, $size);
+}
+
+@function shadow($level) {
+  $box-shadow: map-get($shadows, 1);
+  
+  @if not map-has-key($shadows, $level) {
+    @warn "shadow(#{$level}) not found in _bits.scss. ";
+  }
+
+  @if $level > 1 {
+    @for $i from 2 through $level {
+      $box-shadow: $box-shadow , map-get($shadows, $i);
+    }  
+  }
+
+  @return $box-shadow;
+}
+
+@mixin clearfix {
+  &:before, &:after {
+    content: "";
+    display: block;
+    height: 0;
+    overflow: hidden;
+  }
+  &:after {
+      clear: both;
+  }
+}
+
+@mixin optional-at-root($sel) {
+  @at-root #{if(not &, $sel, selector-append(&, $sel))} {
+    @content;
+  }
+}
+
+@mixin placeholder {
+  @include optional-at-root('::-webkit-input-placeholder') {
+    @content;
+  }
+
+  @include optional-at-root(':-moz-placeholder') {
+    @content;
+  }
+
+  @include optional-at-root('::-moz-placeholder') {
+    @content;
+  }
+
+  @include optional-at-root(':-ms-input-placeholder') {
+    @content;
+  }
+}

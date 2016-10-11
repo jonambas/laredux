@@ -1,0 +1,40 @@
+/* 
+ * Vendor 
+ */
+@import "vendor/normalize";
+
+/* 
+ * Batter! 🍰
+ */
+@import "batter/bits";
+@import "batter/functions";
+@import "batter/base";
+// @import "batter/oldinlineblockgrid";
+@import "batter/thisgridisprettyflexy";
+@import "batter/typography";
+@import "batter/helpers";
+
+/* 
+ * Components 
+ */
+// @import "components/component";
+
+html, body, #root {
+  height: 100%;
+}
+
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  ul {
+    list-style-type: none;
+  }
+
+  li {
+    display: inline-block;
+    padding: rem(9);
+  }
+}

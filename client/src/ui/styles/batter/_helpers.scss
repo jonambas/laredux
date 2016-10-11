@@ -1,0 +1,141 @@
+
+// Text Helpers
+.text--light {
+  font-weight: 300;
+}
+
+.text--regular {
+  font-weight: 400;
+}
+
+.text--bold {
+  font-weight: 700;
+}
+
+.text--center {
+  text-align: center;
+}
+
+.text--left {
+  text-align: left;
+}
+
+.text--right {
+  text-align: right;
+}
+
+.text--white {
+  color: color(white);
+}
+
+.float--right {
+  float: right;
+}
+
+.float--left {
+  float: left;
+}
+
+.color--white {
+  color: color(white);
+}
+
+.color--text {
+  color: color(text);
+}
+
+.clearfix {
+  @include clearfix;
+}
+
+/* 
+Box Helpers
+ This is to ensure vertical rhythm and spacing consistency. 
+ All block elements and buttons have a margin bottom of base(1), 1rem.
+ Do NOT use .padding--l on .grid or .col elements unless you do not have a gutter width.
+*/
+
+@for $i from 0 through 5 {
+  .margin--t-#{$i} {
+    margin-top: $i + 0rem !important;
+  }
+
+  .margin--b-#{$i} {
+    margin-bottom: $i + 0rem !important;
+  }
+
+  .margin--l-#{$i} {
+    margin-left: $i + 0rem !important;
+  }
+
+  .margin--r-#{$i} {
+    margin-right: $i + 0rem !important;
+  } 
+
+  .margin--tb-#{$i} { 
+    margin-top: $i + 0rem !important;
+    margin-bottom: $i + 0rem !important;
+  }
+
+  .margin--lr-#{$i}{
+    margin-left: $i + 0rem !important;
+    margin-right: $i + 0rem !important;
+  }
+
+  .padding--t-#{$i} {
+    padding-top: $i + 0rem !important;
+  }
+
+  .padding--b-#{$i} {
+    padding-bottom: $i + 0rem !important;
+  }
+
+  .padding--l-#{$i} {
+    padding-left: $i + 0rem !important;
+  }
+
+  .padding--r-#{$i} {
+    padding-right: $i + 0rem !important;
+  }
+
+  .padding--tb-#{$i} {  
+    padding-top: $i + 0rem !important;
+    padding-bottom: $i + 0rem !important;
+  }
+
+  .padding--lr-#{$i}{
+    padding-left: $i + 0rem !important;
+    padding-right: $i + 0rem !important;
+  }
+}
+
+/* Display Helpers */
+.h-invisible { 
+  visibility: hidden;
+}
+
+.h-hide { 
+  display: none !important;
+}
+
+.h-inline { 
+  display: inline;
+}
+
+.h-block { 
+  display: block !important;
+}
+
+.h-inline-block { 
+  display: inline-block;
+}
+
+/* VA */
+.va-t {
+  display: table;
+  width: 100%;
+  .va-tc {
+    display: table-cell;
+    vertical-align: middle;
+  }
+}
