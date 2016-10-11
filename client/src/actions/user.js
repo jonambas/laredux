@@ -28,11 +28,6 @@ export function login(credentials) {
       });
   }
 }
-/*const token = localStorage.getItem('token');
-
-if (token) {
-  // store.dispatch(loginSuccess(token));
-}*/
 
 export function loginRequest(credentials) {
   return {
