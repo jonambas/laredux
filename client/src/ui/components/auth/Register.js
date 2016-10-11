@@ -16,10 +16,7 @@ class Register extends Component {
     return (
       <div className="flex center-xs middle-xs" style={{ height: '100%'}}>
         <div className="col-xs-10 col-md-4">
-          <h3>Registration</h3>
-          
-          
-          
+          <h3>Registration</h3>          
 
           <form onSubmit={handleSubmit(this.onSubmit.bind(this))} >
             <fieldset>
