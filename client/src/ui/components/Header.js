@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 
-export class Header extends React.Component {
+class Header extends React.Component {
 
   renderPreAuth() {
     return (
@@ -32,9 +32,13 @@ export class Header extends React.Component {
   }
 }
 
+Header.propTypes = {
+  authenticated: PropTypes.bool.isRequired
+}
+
 function mapStateToProps(state) {
   return {
-    authenticated: state.user.authenticated,
+    authenticated: state.user.authenticated
   };
 }
 

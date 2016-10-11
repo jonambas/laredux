@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
+import React, { PropTypes } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 import { browserHistory } from 'react-router';
 import { login } from '../../../actions/user';
 
-class Login extends Component {
+class Login extends React.Component {
 
   componentDidMount() {
     const { authenticated } = this.props;
@@ -41,6 +41,13 @@ class Login extends Component {
       </div>
     );
   }
+}
+
+Login.propTypes = {
+  login: PropTypes.func.isRequired,
+  authenticated: PropTypes.bool.isRequired,
+  authenticating: PropTypes.bool,
+  errorMessage: PropTypes.string
 }
 
 function mapStateToProps(state) {

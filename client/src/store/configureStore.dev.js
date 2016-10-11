@@ -7,8 +7,7 @@ import rootReducer from '../reducers';
 const middleware = [ thunk, routerMiddleware(browserHistory) ];
 const initialState = {
   user: {
-    authenticated: false,
-    authenticating: false
+    authenticated: false
   }
 };
 
