@@ -1,10 +1,11 @@
 import store from '../store/configureStore';
-import { loginSuccess } from  '../actions/user';
+import { loginSuccess, fetchUser } from  '../actions/user';
 
 export const verifyAuth = (next, replace) => {
   const state = store.getState();
 
-  const intendedRoute = state.routing.locationBeforeTransitions.pathName; // Doesn't do anything yet
+  // Doesn't do anything yet
+  const intendedRoute = state.routing.locationBeforeTransitions.pathName; 
   // console.log('attempting', intendedRoute);
 
   if (!state.user.authenticated) {
@@ -16,6 +17,7 @@ export const checkToken = () => {
   const token = localStorage.getItem('token');
 
   if (token){
-    store.dispatch(loginSuccess(token));
+    store.dispatch(loginSuccess());
+    store.dispatch(fetchUser());
   }
 }

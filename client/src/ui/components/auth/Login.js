@@ -46,7 +46,7 @@ function mapStateToProps(state) {
   return {
     authenticated: state.user.authenticated,
     authenticating: state.user.authenticating,
-    errorMessage: state.user.errorMessage,
+    errorMessage: state.user.loginError,
   };
 }
 

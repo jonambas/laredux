@@ -12,32 +12,30 @@ use App\User;
 
 class ApiAuthController extends Controller
 {
-    public function test(Request $request)
-    {
-      return response()->json([
-          'text' => 'Hello World'
-        ], 200);
-    }
-
+    
     public function login(Request $request) {
 
       $credentials = $request->only('email', 'password');
 
       try {
+
         $token = JWTAuth::attempt($credentials);
+        
         if (!$token) {
           return response()->json(['error' => 'invalid_credentials'], 401);
         }
+
       } catch (JWTException $e) {
+
         return response()->json(['error' => 'could_not_create_token'], 500);
-      }
+
+      }      
 
       return response()->json(compact('token'), 200);
-      
     }
 
     public function register(Request $request) {
-      return response()->json('register json', 200);
-      return JWTAuth::parseToken()->authenticate();
+      // return response()->json('register json', 200);
+      // return JWTAuth::parseToken()->authenticate();
     }
 }
