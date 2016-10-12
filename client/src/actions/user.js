@@ -23,9 +23,9 @@ export function loginError(loginErrorMessage) {
   };
 }
 
+// This resets all auth & user states
 export function logout() {
   localStorage.removeItem('token');
-
   return {
     type: LOGOUT,
   };
@@ -35,7 +35,6 @@ export function logout() {
 export const FETCH_USER = 'FETCH_USER';
 export const FETCH_USER_SUCCESS = 'FETCH_USER_SUCCESS';
 export const FETCH_USER_ERROR = 'FETCH_USER_ERROR';
-export const RESET_USER = 'RESET_USER';
 
 export function fetchUserRequest() {
   return {
@@ -54,12 +53,6 @@ export function fetchUserError(fetchUserErrorMessage) {
   return {
     type: FETCH_USER_ERROR,
     fetchUserErrorMessage,
-  };
-}
-
-export function resetUser() {
-  return {
-    type: RESET_USER,
   };
 }
 

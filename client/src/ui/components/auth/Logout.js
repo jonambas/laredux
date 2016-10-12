@@ -7,9 +7,7 @@ import { logout, resetUser } from '../../../actions/user';
 class Logout extends React.Component {
 
   componentWillMount() {
-    const { logout, resetUser } = this.props;
-    logout();
-    resetUser();
+    this.props.logout();
     browserHistory.push('/');
   }
 
@@ -22,7 +20,6 @@ class Logout extends React.Component {
 
 Logout.propTypes = {
   logout: PropTypes.func.isRequired,
-  resetUser: PropTypes.func.isRequired,
 };
 
 function mapDispatchToProps(dispatch) {

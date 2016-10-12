@@ -13,11 +13,6 @@ function user(state = {}, action) {
 
     case 'FETCH_USER_SUCCESS' :
       return { ...state, ...action.user };
-    case 'RESET_USER' :
-      return { ...state,
-        id: null,
-        name: null,
-        email: null };
     // case 'FETCH_USER_ERROR' :
     // case 'FETCH_USER' :
 
@@ -32,8 +27,13 @@ function user(state = {}, action) {
       return { ...state,
         authenticated: false,
         authenticating: false,
+        registering: false,
         loginError: null,
-        registerError: null };
+        registerError: null,
+        id: null,
+        name: null,
+        email: null,
+      };
 
     default:
       return state;
