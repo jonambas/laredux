@@ -1,5 +1,3 @@
-/* eslint-disable no-class-assign, react/forbid-prop-types */
-
 import React, { PropTypes } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
@@ -17,7 +15,7 @@ class Register extends React.Component {
   }
 
   render() {
-    const { handleSubmit, registering, errorMessages, anyTouched } = this.props;
+    const { handleSubmit, registering, errorMessages } = this.props;
 
     const onSubmit = handleSubmit(credentials => this.props.register(credentials));
 
@@ -28,20 +26,17 @@ class Register extends React.Component {
 
           <form onSubmit={onSubmit} >
             <fieldset>
-              {errorMessages && errorMessages.name && anyTouched ?
-                errorMessages.name.map(i => <p>name: {i}</p>) : ''}
+              <p>{ errorMessages && errorMessages.name ? errorMessages.name : ''}</p>
               <label htmlFor="name">Name</label>
               <Field name="name" component="input" type="text" />
             </fieldset>
             <fieldset>
-              {errorMessages && errorMessages.email && anyTouched ?
-                errorMessages.email.map(i => <p>email: {i}</p>) : ''}
+              <p>{ errorMessages && errorMessages.email ? errorMessages.name : ''}</p>
               <label htmlFor="email">Email</label>
               <Field name="email" component="input" type="text" />
             </fieldset>
             <fieldset>
-              {errorMessages && errorMessages.password && anyTouched ?
-                errorMessages.password.map(i => <p>pw: {i}</p>) : ''}
+              <p>{ errorMessages && errorMessages.password ? errorMessages.name : ''}</p>
               <label htmlFor="password">Password</label>
               <Field name="password" component="input" type="password" />
             </fieldset>
@@ -59,15 +54,18 @@ Register.propTypes = {
   authenticated: PropTypes.bool.isRequired,
   handleSubmit: PropTypes.func,
   registering: PropTypes.bool,
-  anyTouched: PropTypes.bool,
-  errorMessages: PropTypes.object,
+  errorMessages: PropTypes.shape({
+    name: PropTypes.string,
+    email: PropTypes.string,
+    password: PropTypes.string,
+  }),
 };
 
 function mapStateToProps(state) {
   return {
     authenticated: state.user.authenticated,
     registering: state.user.registering,
-    errorMessages: state.user.registerError,
+    errorMessages: state.user.registerErrors,
   };
 }
 
@@ -75,7 +73,7 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators({ register }, dispatch);
 }
 
-Register = connect(mapStateToProps, mapDispatchToProps)(Register);
-Register = reduxForm({ form: 'register' })(Register);
-export default Register;
+export default reduxForm({
+  form: 'register',
+})(connect(mapStateToProps, mapDispatchToProps)(Register));
 

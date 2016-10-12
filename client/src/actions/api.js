@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import { browserHistory } from 'react-router';
 import api from '../apiConfig';
 import { fetchUserRequest,

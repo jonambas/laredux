@@ -1,5 +1,3 @@
-/* eslint-disable react/forbid-prop-types */
-
 import React, { PropTypes } from 'react';
 import Header from '../components/Header';
 
@@ -15,7 +13,7 @@ class MainLayout extends React.Component {
 }
 
 MainLayout.propTypes = {
-  children: PropTypes.object.isRequired,
+  children: PropTypes.node.isRequired,
 };
 
 export default MainLayout;

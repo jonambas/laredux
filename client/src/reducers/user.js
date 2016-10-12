@@ -17,11 +17,11 @@ function user(state = {}, action) {
     // case 'FETCH_USER' :
 
     case 'REGISTER_REQUEST' :
-      return { ...state, registering: true, registerError: null };
+      return { ...state, registering: true, registerErrors: undefined };
     case 'REGISTER_SUCCESS' :
       return { ...state, registering: false };
     case 'REGISTER_ERROR' :
-      return { ...state, registering: false, registerError: action.registerErrorMessage };
+      return { ...state, registering: false, registerErrors: action.registerErrorMessages };
 
     case 'LOGOUT' :
       return { ...state,
@@ -29,7 +29,7 @@ function user(state = {}, action) {
         authenticating: false,
         registering: false,
         loginError: null,
-        registerError: null,
+        registerErrors: null,
         id: null,
         name: null,
         email: null,

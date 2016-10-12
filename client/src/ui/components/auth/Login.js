@@ -1,5 +1,3 @@
-/* eslint-disable no-class-assign, react/forbid-prop-types */
-
 import React, { PropTypes } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
@@ -63,6 +61,6 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators({ login }, dispatch);
 }
 
-Login = connect(mapStateToProps, mapDispatchToProps)(Login);
-Login = reduxForm({ form: 'login' })(Login);
-export default Login;
+export default reduxForm({
+  form: 'login',
+})(connect(mapStateToProps, mapDispatchToProps)(Login));

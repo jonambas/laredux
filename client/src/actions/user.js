@@ -32,13 +32,13 @@ export function logout() {
 }
 
 // Fetching User Information
-export const FETCH_USER = 'FETCH_USER';
+export const FETCH_USER_REQUEST = 'FETCH_USER_REQUEST';
 export const FETCH_USER_SUCCESS = 'FETCH_USER_SUCCESS';
 export const FETCH_USER_ERROR = 'FETCH_USER_ERROR';
 
 export function fetchUserRequest() {
   return {
-    type: FETCH_USER,
+    type: FETCH_USER_REQUEST,
   };
 }
 
@@ -73,9 +73,9 @@ export function registerSuccess() {
   };
 }
 
-export function registerError(registerErrorMessage) {
+export function registerError(registerErrorMessages) {
   return {
     type: REGISTER_ERROR,
-    registerErrorMessage,
+    registerErrorMessages,
   };
 }
