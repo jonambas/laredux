@@ -17,7 +17,7 @@ $baseline: 16;
 $color-map: (
   white:      #FEFEFE,
   off-white:  #F0F1F4,
-  black:      #1e2027,
+  black:      #343B49,
   blue:       #6F9DEF,
   text:       #343B49
 );
@@ -28,10 +28,10 @@ $color-map: (
  */
 
 $breakpoints: (
-  xl: 80em,
-  lg:  64em,
+  sm:  30em, 
   md:  48em,
-  sm:  30em
+  lg:  64em,
+  xl: 80em
 );
 
 /*

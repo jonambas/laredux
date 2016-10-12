@@ -23,16 +23,16 @@ class Login extends React.Component {
     
     return (
       <div className="flex center-xs middle-xs" style={{ height: '100%'}}>
-        <div className="col-xs-10 col-md-4">
+        <div className="col-xs-10 col-md-6 col-lg-4">
           <h3>Login</h3>
           <p>{ errorMessage ? errorMessage : '' }</p>
           <form onSubmit={handleSubmit(this.onSubmit.bind(this))} >
             <fieldset>
-              <label>Email:</label>
+              <label>Email</label>
               <Field name="email" component="input" type="text"/>
             </fieldset>
             <fieldset>
-              <label>Password:</label>
+              <label>Password</label>
               <Field name="password" component="input" type="password"/>
             </fieldset>
             <button type="submit" disabled={authenticating}>Login</button>

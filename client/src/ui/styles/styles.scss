@@ -45,15 +45,35 @@ nav {
 }
 
 fieldset {
+  padding: 0;
+  margin: 0 0 1.5rem;
   border: none;
   text-align: left;
 
   input {
     display: block;
     width: 100%;
+    padding: rem(9) rem(12);
+    border: 1px solid darken(color(off-white), 8);
   }
 
   label {
     display: block;
+    margin-bottom: rem(9);
+    font-size: rem(15);
   }
 }
+
+button[type='submit'] {
+  float: right;
+
+  padding: rem(9) rem(18);  
+  background: darken(color(off-white), 3);
+  border: none;
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.4;
+  }
+}
+

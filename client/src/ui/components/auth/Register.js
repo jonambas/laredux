@@ -19,27 +19,30 @@ class Register extends React.Component {
   }
 
   render() {
-    const { handleSubmit, registering, errorMessages } = this.props;
+    const { handleSubmit, registering, errorMessages, anyTouched } = this.props;
     
     return (
       <div className="flex center-xs middle-xs" style={{ height: '100%'}}>
-        <div className="col-xs-10 col-md-4">
+        <div className="col-xs-10 col-md-6 col-lg-4">
           <h3>Registration</h3>          
 
           <form onSubmit={handleSubmit(this.onSubmit.bind(this))} >
             <fieldset>
-              {errorMessages && errorMessages.name  ? errorMessages.name.map(i => <p>name: {i}</p> ) : ''}
-              <label>Name:</label>
+              {errorMessages && errorMessages.name && anyTouched ?
+                errorMessages.name.map(i => <p>name: {i}</p> ) : ''}
+              <label>Name</label>
               <Field name="name" component="input" type="text"/>
             </fieldset>
             <fieldset>
-              {errorMessages && errorMessages.email  ? errorMessages.email.map(i => <p>email: {i}</p> ) : ''}
-              <label>Email:</label>
+              {errorMessages && errorMessages.email && anyTouched ?
+                errorMessages.email.map(i => <p>email: {i}</p> ) : ''}
+              <label>Email</label>
               <Field name="email" component="input" type="text"/>
             </fieldset>
             <fieldset>
-              {errorMessages && errorMessages.password  ? errorMessages.password.map(i => <p>pw: {i}</p> ) : ''}
-              <label>Password:</label>
+              {errorMessages && errorMessages.password && anyTouched ?
+                errorMessages.password.map(i => <p>pw: {i}</p> ) : ''}
+              <label>Password</label>
               <Field name="password" component="input" type="password"/>
             </fieldset>
             <button type="submit" disabled={registering}>Register</button>
