@@ -1,3 +1,3 @@
-# lareadux
+# laredux
 
-Server side Laravel + Client side React & Redux Boilerplate
+A server side Laravel API + client side React & Redux Boilerplate
