@@ -16,12 +16,16 @@ module.exports = {
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin()
   ],
+  eslint: {
+    configFile: './.eslintrc'
+  },
   module: {
     loaders: [
     // js
     {
       test: /\.js$/,
-      loaders: ['babel'],
+      loaders: ['babel', 'eslint'],
+      exclude: /node_modules/,
       include: path.join(__dirname, 'src')
     },
     // CSS
