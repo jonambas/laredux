@@ -15,17 +15,18 @@ class Logout extends React.Component {
 
   render() {
     return (
-      <div></div>
+      <div>Logging Out</div>
     );
   }
 }
 
 Logout.propTypes = {
   logout: PropTypes.func.isRequired,
-  resetUser: PropTypes.bool.isRequired
-}
+  resetUser: PropTypes.func.isRequired,
+};
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ logout, resetUser }, dispatch)
-} 
+  return bindActionCreators({ logout, resetUser }, dispatch);
+}
+
 export default connect(null, mapDispatchToProps)(Logout);

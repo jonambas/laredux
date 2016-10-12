@@ -1,3 +1,5 @@
+/* eslint-disable no-class-assign, react/forbid-prop-types */
+
 import React, { PropTypes } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
@@ -6,7 +8,7 @@ import { browserHistory } from 'react-router';
 import { register } from '../../../actions/user';
 
 class Register extends React.Component {
-  
+
   componentDidMount() {
     const { authenticated } = this.props;
     if (authenticated) {
@@ -14,36 +16,34 @@ class Register extends React.Component {
     }
   }
 
-  onSubmit(credentials) {
-    this.props.register(credentials);
-  }
-
   render() {
     const { handleSubmit, registering, errorMessages, anyTouched } = this.props;
-    
-    return (
-      <div className="flex center-xs middle-xs" style={{ height: '100%'}}>
-        <div className="col-xs-10 col-md-6 col-lg-4">
-          <h3>Registration</h3>          
 
-          <form onSubmit={handleSubmit(this.onSubmit.bind(this))} >
+    const onSubmit = handleSubmit(credentials => this.props.register(credentials));
+
+    return (
+      <div className="flex center-xs middle-xs" style={{ height: '100%' }}>
+        <div className="col-xs-10 col-md-6 col-lg-4">
+          <h3>Registration</h3>
+
+          <form onSubmit={onSubmit} >
             <fieldset>
               {errorMessages && errorMessages.name && anyTouched ?
-                errorMessages.name.map(i => <p>name: {i}</p> ) : ''}
-              <label>Name</label>
-              <Field name="name" component="input" type="text"/>
+                errorMessages.name.map(i => <p>name: {i}</p>) : ''}
+              <label htmlFor="name">Name</label>
+              <Field name="name" component="input" type="text" />
             </fieldset>
             <fieldset>
               {errorMessages && errorMessages.email && anyTouched ?
-                errorMessages.email.map(i => <p>email: {i}</p> ) : ''}
-              <label>Email</label>
-              <Field name="email" component="input" type="text"/>
+                errorMessages.email.map(i => <p>email: {i}</p>) : ''}
+              <label htmlFor="email">Email</label>
+              <Field name="email" component="input" type="text" />
             </fieldset>
             <fieldset>
               {errorMessages && errorMessages.password && anyTouched ?
-                errorMessages.password.map(i => <p>pw: {i}</p> ) : ''}
-              <label>Password</label>
-              <Field name="password" component="input" type="password"/>
+                errorMessages.password.map(i => <p>pw: {i}</p>) : ''}
+              <label htmlFor="password">Password</label>
+              <Field name="password" component="input" type="password" />
             </fieldset>
             <button type="submit" disabled={registering}>Register</button>
           </form>
@@ -57,9 +57,11 @@ class Register extends React.Component {
 Register.propTypes = {
   register: PropTypes.func.isRequired,
   authenticated: PropTypes.bool.isRequired,
+  handleSubmit: PropTypes.func,
   registering: PropTypes.bool,
-  errorMessages: PropTypes.object
-}
+  anyTouched: PropTypes.bool,
+  errorMessages: PropTypes.object,
+};
 
 function mapStateToProps(state) {
   return {
@@ -70,7 +72,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ register }, dispatch)
+  return bindActionCreators({ register }, dispatch);
 }
 
 Register = connect(mapStateToProps, mapDispatchToProps)(Register);

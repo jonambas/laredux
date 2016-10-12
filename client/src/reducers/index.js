@@ -5,9 +5,9 @@ import { reducer as formReducer } from 'redux-form';
 import user from './user';
 
 const rootReducer = combineReducers({
-  user, 
+  user,
   routing: routerReducer,
-  form: formReducer
+  form: formReducer,
 });
 
 export default rootReducer;

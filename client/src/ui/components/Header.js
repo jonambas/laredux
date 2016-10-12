@@ -10,7 +10,7 @@ class Header extends React.Component {
         <li><Link to="/login">Login</Link></li>
         <li><Link to="/register">Register</Link></li>
       </ul>
-    )
+    );
   }
 
   renderPostAuth() {
@@ -18,12 +18,12 @@ class Header extends React.Component {
       <ul className="text--right">
         <li><Link to="/logout">Logout</Link></li>
       </ul>
-    )
+    );
   }
 
   render() {
     const { authenticated } = this.props;
-    
+
     return (
       <nav>
         {!authenticated ? this.renderPreAuth() : this.renderPostAuth()}
@@ -33,12 +33,12 @@ class Header extends React.Component {
 }
 
 Header.propTypes = {
-  authenticated: PropTypes.bool.isRequired
-}
+  authenticated: PropTypes.bool.isRequired,
+};
 
 function mapStateToProps(state) {
   return {
-    authenticated: state.user.authenticated
+    authenticated: state.user.authenticated,
   };
 }
 

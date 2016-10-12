@@ -2,7 +2,7 @@ import React from 'react';
 import { Router, Route, IndexRoute } from 'react-router';
 import { Provider } from 'react-redux';
 import store, { history } from '../store/configureStore';
-import { verifyAuth } from './middleware'
+import { verifyAuth } from './middleware';
 
 import MainLayout from '../ui/layouts/MainLayout';
 import Welcome from '../ui/components/Welcome';
@@ -16,10 +16,10 @@ const routes = (
     <Router history={history}>
       <Route path="/" component={MainLayout}>
         <IndexRoute component={Welcome} />
-        <Route path="/register" component={Register}/>
-        <Route path="/login" component={Login}/>
-        <Route path="/logout" component={Logout}/>
-        <Route path="/dashboard" component={Dashboard} onEnter={verifyAuth}/>
+        <Route path="/register" component={Register} />
+        <Route path="/login" component={Login} />
+        <Route path="/logout" component={Logout} />
+        <Route path="/dashboard" component={Dashboard} onEnter={verifyAuth} />
       </Route>
     </Router>
   </Provider>

@@ -1,3 +1,5 @@
+/* eslint-disable no-class-assign, react/forbid-prop-types */
+
 import React, { PropTypes } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
@@ -14,26 +16,24 @@ class Login extends React.Component {
     }
   }
 
-  onSubmit(credentials) {
-    this.props.login(credentials);
-  }
-
   render() {
-    const { handleSubmit, errorMessage, authenticated, authenticating } = this.props;
-    
+    const { handleSubmit, errorMessage, authenticating } = this.props;
+
+    const onSubmit = handleSubmit(credentials => this.props.login(credentials));
+
     return (
-      <div className="flex center-xs middle-xs" style={{ height: '100%'}}>
+      <div className="flex center-xs middle-xs" style={{ height: '100%' }}>
         <div className="col-xs-10 col-md-6 col-lg-4">
           <h3>Login</h3>
-          <p>{ errorMessage ? errorMessage : '' }</p>
-          <form onSubmit={handleSubmit(this.onSubmit.bind(this))} >
+          <p>{ errorMessage || '' }</p>
+          <form onSubmit={onSubmit} >
             <fieldset>
-              <label>Email</label>
-              <Field name="email" component="input" type="text"/>
+              <label htmlFor="email">Email</label>
+              <Field id="email" name="email" component="input" type="text" />
             </fieldset>
             <fieldset>
-              <label>Password</label>
-              <Field name="password" component="input" type="password"/>
+              <label htmlFor="password">Password</label>
+              <Field id="password" name="password" component="input" type="password" />
             </fieldset>
             <button type="submit" disabled={authenticating}>Login</button>
           </form>
@@ -47,8 +47,9 @@ Login.propTypes = {
   login: PropTypes.func.isRequired,
   authenticated: PropTypes.bool.isRequired,
   authenticating: PropTypes.bool,
-  errorMessage: PropTypes.string
-}
+  errorMessage: PropTypes.string,
+  handleSubmit: PropTypes.func,
+};
 
 function mapStateToProps(state) {
   return {
@@ -59,7 +60,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ login }, dispatch)
+  return bindActionCreators({ login }, dispatch);
 }
 
 Login = connect(mapStateToProps, mapDispatchToProps)(Login);
