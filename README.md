@@ -19,4 +19,4 @@ $ npm install
 $ npm start
 ```
 
-Client will attempt to make requests to `http://laredux.dev`, but you can change this url in `./client/api/apiConfig.js`
+Client will attempt to make requests to `http://laredux.dev`, but you can change this url in `./client/src/api/apiConfig.js`
