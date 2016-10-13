@@ -1,8 +1,7 @@
-const prod = require('./configureStore.prod');
-const dev = require('./configureStore.dev');
+/* eslint-disable global-require */
 
 if (process.env.NODE_ENV === 'production' || (location && location.hostname !== 'localhost')) {
-  module.exports = prod;
+  module.exports = require('./configureStore.prod');
 } else {
-  module.exports = dev;
+  module.exports = require('./configureStore.dev');
 }
