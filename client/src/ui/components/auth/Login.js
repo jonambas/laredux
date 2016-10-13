@@ -3,7 +3,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 import { browserHistory } from 'react-router';
-import { login } from '../../../actions/api';
+import { login } from '../../../api/user';
 
 class Login extends React.Component {
 

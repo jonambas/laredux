@@ -3,7 +3,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 import { browserHistory } from 'react-router';
-import { register } from '../../../actions/api';
+import { register } from '../../../api/user';
 
 class Register extends React.Component {
 
@@ -31,12 +31,12 @@ class Register extends React.Component {
               <Field name="name" component="input" type="text" />
             </fieldset>
             <fieldset>
-              <p>{ errorMessages && errorMessages.email ? errorMessages.name : ''}</p>
+              <p>{ errorMessages && errorMessages.email ? errorMessages.email : ''}</p>
               <label htmlFor="email">Email</label>
               <Field name="email" component="input" type="text" />
             </fieldset>
             <fieldset>
-              <p>{ errorMessages && errorMessages.password ? errorMessages.name : ''}</p>
+              <p>{ errorMessages && errorMessages.password ? errorMessages.password : ''}</p>
               <label htmlFor="password">Password</label>
               <Field name="password" component="input" type="password" />
             </fieldset>

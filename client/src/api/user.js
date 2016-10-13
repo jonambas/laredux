@@ -1,7 +1,5 @@
-/* eslint-disable */
-
 import { browserHistory } from 'react-router';
-import api from '../apiConfig';
+import api from './apiConfig';
 import { fetchUserRequest,
   fetchUserSuccess,
   fetchUserError,
@@ -10,7 +8,7 @@ import { fetchUserRequest,
   loginError,
   registerRequest,
   registerSuccess,
-  registerError } from './user';
+  registerError } from '../actions/user';
 
 // API Actions
 

@@ -1,9 +1,8 @@
-// Login User
-export const LOGIN_REQUEST = 'LOGIN_REQUEST';
-export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
-export const LOGIN_ERROR = 'LOGIN_ERROR';
-export const LOGOUT = 'LOGOUT';
+import { LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_ERROR, LOGOUT,
+  FETCH_USER_REQUEST, FETCH_USER_SUCCESS, FETCH_USER_ERROR,
+  REGISTER_REQUEST, REGISTER_SUCCESS, REGISTER_ERROR } from './actionTypes';
 
+// Login User
 export function loginRequest() {
   return {
     type: LOGIN_REQUEST,
@@ -32,10 +31,6 @@ export function logout() {
 }
 
 // Fetching User Information
-export const FETCH_USER_REQUEST = 'FETCH_USER_REQUEST';
-export const FETCH_USER_SUCCESS = 'FETCH_USER_SUCCESS';
-export const FETCH_USER_ERROR = 'FETCH_USER_ERROR';
-
 export function fetchUserRequest() {
   return {
     type: FETCH_USER_REQUEST,
@@ -57,10 +52,6 @@ export function fetchUserError(fetchUserErrorMessage) {
 }
 
 // User Registration
-export const REGISTER_REQUEST = 'REGISTER_REQUEST';
-export const REGISTER_SUCCESS = 'REGISTER_SUCCESS';
-export const REGISTER_ERROR = 'REGISTER_ERROR';
-
 export function registerRequest() {
   return {
     type: REGISTER_REQUEST,
