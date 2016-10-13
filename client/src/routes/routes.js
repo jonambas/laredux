@@ -2,7 +2,7 @@ import React from 'react';
 import { Router, Route, IndexRoute } from 'react-router';
 import { Provider } from 'react-redux';
 import store, { history } from '../store/configureStore';
-import { verifyAuth } from './middleware';
+import { verifyAuth } from './routeUtils';
 
 import MainLayout from '../ui/layouts/MainLayout';
 import Welcome from '../ui/components/Welcome';
