@@ -12,7 +12,7 @@ return [
      |
      */
     'supportsCredentials' => false,
-    'allowedOrigins' => ['http://localhost:7770'],
+    'allowedOrigins' => ['*'],
     'allowedHeaders' => ['*'],
     'allowedMethods' => ['*'],
     'exposedHeaders' => [],

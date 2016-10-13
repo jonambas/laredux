@@ -42,7 +42,9 @@ export function login(credentials) {
         dispatch(fetchUser());
         browserHistory.push('/dashboard');
       })
-      .catch(error => dispatch(loginError(error.response.data.error)));
+      .catch((error) => {
+        dispatch(loginError(error.response ? error.response.data.error : error.message));
+      });
   };
 }
 
@@ -61,7 +63,9 @@ export function register(credentials) {
         dispatch(fetchUser());
         browserHistory.push('/dashboard');
       })
-      .catch(error => dispatch(registerError(error.response.data.error)));
+      .catch((error) => {
+        dispatch(registerError(error.response ? error.response.data.error : error.message));
+      });
   };
 }
 
