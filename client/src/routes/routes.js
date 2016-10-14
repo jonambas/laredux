@@ -1,7 +1,7 @@
 import React from 'react';
 import { Router, Route, IndexRoute } from 'react-router';
 import { Provider } from 'react-redux';
-import store, { history } from '../store/configureStore';
+import { store, history } from '../store/configureStore';
 import { verifyAuth } from './routeUtils';
 
 import MainLayout from '../ui/layouts/MainLayout';

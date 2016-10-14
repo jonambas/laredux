@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { browserHistory } from 'react-router';
-import { logout, resetUser } from '../../../actions/user';
+import { logout } from '../../../actions/user';
 
 class Logout extends React.Component {
 
@@ -23,7 +23,7 @@ Logout.propTypes = {
 };
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ logout, resetUser }, dispatch);
+  return bindActionCreators({ logout }, dispatch);
 }
 
 export default connect(null, mapDispatchToProps)(Logout);

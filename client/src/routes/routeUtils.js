@@ -1,6 +1,6 @@
 /* eslint-disable import/prefer-default-export */
 
-import store from '../store/configureStore';
+import { store } from '../store/configureStore';
 // import { loginSuccess, fetchUser } from '../actions/user';
 
 export const verifyAuth = (next, replace) => {

@@ -1,14 +1,8 @@
 import { browserHistory } from 'react-router';
-import api from './apiConfig';
-import { fetchUserRequest,
-  fetchUserSuccess,
-  fetchUserError,
-  loginRequest,
-  loginSuccess,
-  loginError,
-  registerRequest,
-  registerSuccess,
-  registerError } from '../actions/user';
+import api from '../api';
+import { getToken, setToken } from './actionUtils';
+import { fetchUserRequest, fetchUserSuccess, fetchUserError, loginRequest, loginSuccess,
+  loginError, registerRequest, registerSuccess, registerError } from './user';
 
 // API Actions
 
@@ -18,7 +12,7 @@ export function fetchUser() {
     dispatch(fetchUserRequest());
 
     api.get('/user', {
-      headers: { authorization: `Bearer ${localStorage.getItem('token')}` },
+      headers: { authorization: `Bearer ${getToken()}` },
     })
       .then((response) => {
         const { name, id, email } = response.data.user;
@@ -36,7 +30,7 @@ export function login(credentials) {
     api.post('/login', credentials)
       .then((response) => {
         dispatch(loginSuccess());
-        localStorage.setItem('token', response.data.token);
+        setToken(response.data.token);
       })
       .then(() => {
         dispatch(fetchUser());
@@ -56,7 +50,7 @@ export function register(credentials) {
     api.post('/register', credentials)
       .then((response) => {
         dispatch(registerSuccess());
-        localStorage.setItem('token', response.data.token);
+        setToken(response.data.token);
       })
       .then(() => {
         dispatch(loginSuccess());
@@ -70,10 +64,10 @@ export function register(credentials) {
 }
 
 // Used to log user in if token is valid
-// TODO: add an api endpoint to check token
+// TODO: add an api endpoint to check token?
 export function checkToken() {
   return (dispatch) => {
-    const token = localStorage.getItem('token');
+    const token = getToken();
 
     if (token) {
       dispatch(loginSuccess());
